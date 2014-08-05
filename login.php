@@ -1,5 +1,6 @@
 <?php
 echo '<meta charset = UTF-8>';
+include_once 'classes/Bcrypt.class.php';
 
 // O include_once, inclui qualquer arquivo quando for necessário, ou seja, só inclui um arquivo se o mesmo
 // não tiver sido incluído anteriormente.
@@ -18,9 +19,10 @@ if($totalUsuario === 0)
     $usuarios = mysql_fetch_array($result);
     $senhaUsuario = $usuarios['SENHA_USUARIO'];
     $tipoUsuario = $usuarios['TIPO_USUARIO'];
-    if($senha !== $senhaUsuario){
+    $hash = $usuarios['SENHA_USUARIO'];
+    if(Bcrypt::check($senha, $hash) !== $senhaUsuario){
         echo '<a href=frmlogin.php>Senha não confere !</a>';
-    } else{
+    } else {
         // Agora temos o usuário e senha corretos 
         session_start();
         $_SESSION['email'] = $email;
