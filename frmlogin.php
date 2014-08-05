@@ -10,7 +10,7 @@
 
 
 
-<form method= post action="login.php">
+        <form method= post action="login.php">
 
 <label>Email:</label> <input type = email name="email"> <br/>
 <label>Senha:</label> <input type= password name="senha"> <br/>

@@ -13,7 +13,7 @@ $usuarios = mysql_fetch_assoc($result);
 $hash = $usuarios ['SENHA_USUARIO'];
 if(Bcrypt::check($senha, $hash))
 {
-    echo 'Senha OK !'; 
+    echo '<script>location.href=indexrestrito.php'; 
 }else{
     echo 'Senha incorreta !';
 }
