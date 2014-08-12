@@ -12,7 +12,7 @@ $senha = Bcrypt::hash($senha);
 //echo $senha;
 
 $inserir = "INSERT INTO usuario (NOME_USUARIO, EMAIL_USUARIO, SENHA_USUARIO, TIPO_USUARIO)"
-. "VALUES ('$nome', '$email', '$senha', 'RES')";
+. " VALUES ('$nome', '$email', '$senha', 'RES')";
 mysql_query($inserir);
 
 if(mysql_query($query))
