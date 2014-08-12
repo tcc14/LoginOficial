@@ -2,6 +2,7 @@
 
 function validaAutenticacao($link, $tipo){
     echo '<meta charset = "UTF-8">';
+    include_once 'classes/Bcrypt.class.php';
     // abrir sessão
     session_start(); 
     // Se não foi definido a sessão senha ou email
@@ -28,7 +29,7 @@ function validaAutenticacao($link, $tipo){
              $usuarios = mysql_fetch_assoc($result);
              $senhaBanco = $usuarios['SENHA_USUARIO'];
              $tipoBanco = $usuarios['TIPO_USUARIO'];
-             if($senha !== $senhaBanco){
+             if(!Bcrypt::check($senha,$senhaBanco)){
                  session_destroy();
               echo '<script>
                  alert("Acesso Negado !\n Senha do Usuário não confere")
