@@ -20,7 +20,7 @@ if($totalUsuario === 0)
     $senhaUsuario = $usuarios['SENHA_USUARIO'];
     $tipoUsuario = $usuarios['TIPO_USUARIO'];
     $hash = $usuarios['SENHA_USUARIO'];
-    if(Bcrypt::check($senha, $hash) !== $senhaUsuario){
+    if(!Bcrypt::check($senha, $hash)){
         echo '<a href=frmlogin.php>Senha não confere !</a>';
     } else {
         // Agora temos o usuário e senha corretos 
